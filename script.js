@@ -1,8 +1,15 @@
 // add current day to the page
 $("#currentDay").append(moment().format('MMMM Do YYYY'));
 
+// create current hour save it as a variable
 var currentHour = moment().format('ha');
 
+// create hour array
+var hours = ['8am','9am','10am','11am','12pm','1p','2pm','3pm','4pm'];
+
+
+
+// decide which current hour it is and format all the rows accordingly
 if (currentHour === '8am'){
     $("#8am").addClass("table-warning");
     $("#9am").addClass("table-success");
