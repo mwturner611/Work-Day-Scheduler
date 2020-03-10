@@ -5,8 +5,38 @@ $("#currentDay").append(moment().format('MMMM Do YYYY'));
 var currentHour = moment().format('ha');
 
 // create hour array
-var hours = ['8am','9am','10am','11am','12pm','1p','2pm','3pm','4pm'];
+var hours = ['8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm'];
 
+// Main loop to create list items to the screen
+for (var i = 0; i < hours.length; i++){
+    // create row and add attributes
+    var newRow = $("<tr>");
+    newRow.addClass("text-center");
+    newRow.attr("scope", "row");
+    newRow.attr("id", hours[i]);
+
+    // create the row content and add attributes
+    var newTime = $("<td>" + hours[i] + "</td>");
+    var newStuff = $("<td>");
+    newStuff.attr({"colspan":"3", "ID":hours[i]+"Stuff"});
+    var newInput = $("<input>");
+    newInput.attr({"class":"form-control", "placeholder":"Your task here"});
+    var newButtonSpace = $("<td>");
+    var newButton = $("<button>" + "Save" + "</button>");
+    newButton.addClass("btn btn-info");
+    newButton.attr({"type":"button"});
+
+    // append elements inside row content, contents in row, row to tbody tag on page
+    newStuff.append(newInput);
+    newButtonSpace.append(newButton);
+    newRow.append(newTime, newStuff, newButtonSpace);
+    $("tbody").append(newRow);
+
+}
+
+$(".btn").on("click", function() {
+   console.log('it works');
+});
 
 
 // decide which current hour it is and format all the rows accordingly
